@@ -23,6 +23,7 @@
           <%= yield %>
         </div>
         <div class="col-md-4 twitter-and-rss">
+              <div>
             <div class="btn-group" data-toggle="buttons">
               <label class="btn btn-primary active">
                 <input type="radio" name="options" id="option1" autocomplete="off" checked> LA Rams
@@ -35,12 +36,10 @@
               </label>
             </div>
             <br />
-          <div>
-          <a class="twitter" href="https://twitter.com/LARamsSite/lists/the-latest-rams-news">A Twitter List by LARamsSite</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <div class="twitter-feed">
+          <a class="twitter-timeline" href="https://twitter.com/LARamsSite/lists/the-latest-rams-news">A Twitter List by LARamsSite</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
-          <div class="rss">
           <%=render '/layouts/rss'%>
-          </div>
         </div>
       </div>
     </div>
