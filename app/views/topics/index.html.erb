@@ -1,0 +1,43 @@
+<p id="notice" <%= notice %></p>
+
+<h1>Welcome to the better Los Angeles Rams Forum</h1>
+<br />
+
+  <%@topics.each do |topic| %>
+      <h3><%= link_to topic.name, topic_path(topic)   %></h3>
+  <% end %>
+<br>
+
+<table class ="table table-striped">
+<thead>
+  <tr>
+  <th>
+    <h3>Topic Name</h3>
+
+  </th>
+  <th>
+    <h3># of Posts</h3>
+  </th>
+  <th>
+    Last Reply
+  </th>
+  </tr>
+  </thead>
+  <tbody>
+<% @topics.each do |topic|%>
+  <h4>
+    <tr>
+      <td>
+        <%= link_to topic.name, topic_path(topic)  %>
+      </td>
+      <td>
+        <%= topic.posts.count %>
+      </td>
+      <td>
+        <%= topic.posts.count %>
+      </td>
+    </tr>
+  </h4>
+<%end%>
+  </tbody>
+</table>

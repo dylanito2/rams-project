@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RamsProject</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.10.1/trix.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/0.10.1/trix.js"></script>
+  </head>
+  <body>
+    <%= render 'layouts/navbar' %>
+    <%if !notice.nil? && !alert.nil?%>
+    <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+    <%end%>
+    <% if flash[:alert]%>
+    <%= flash[:alert] %>
+    <%end%>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <%= yield %>
+        </div>
+        <div class="col-md-4 twitter-and-rss">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> LA Rams
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> NFC West News
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Around the NFL
+              </label>
+            </div>
+            <br />
+          <div>
+          <a class="twitter" href="https://twitter.com/LARamsSite/lists/the-latest-rams-news">A Twitter List by LARamsSite</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+          <div class="rss">
+          <%=render '/layouts/rss'%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

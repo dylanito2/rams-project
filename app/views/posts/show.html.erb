@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<div class='post-topic'>
+<h3><%= link_to "Return To #{@post.topic.name}" , topic_path(@post.topic_id) %></h3>
+<h3>
+  <%= @post.title %>
+</h3>
+<h4><%= link_to 'Reply To Post', new_post_reply_path(:post_id => @post.id) %> </h4>
+<br />
+</div>
+
+
+  <div class="row">
+    <div class="col-md-3">
+        <strong><%= @post.user.username %></strong><br />
+        Joined On: <%= @post.user.created_at.strftime("%B %-d, %Y") %><br />
+        # Posts: <%= @post.user.posts.count %>
+      </div>
+      <div class="col-md-9">
+        <%= raw @post.content %><% if @post.is_owned_by?(current_user)%><%= link_to 'Edit', edit_topic_post_path(@post) %><%end%>
+      </div>
+  </div>
+<%@post.replies.each do |reply|%>
+  <br />
+  <div class="row">
+    <div class="col-md-3">
+        <strong><%= reply.user.username %></strong>
+        Joined On: <%= reply.user.created_at.strftime("%B %-d, %Y") %><br />
+        # Posts:<%= reply.user.posts.count %>
+      </div>
+      <div class='col-md-9'>
+        <%= raw reply.content%><% if reply.is_owned_by?(current_user)%><%= link_to 'Edit Reply', edit_reply_path(reply) %><%end%>
+      </div>
+    </div>
+<%end%>

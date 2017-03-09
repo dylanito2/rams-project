@@ -1,0 +1,25 @@
+<h2>Get the Latest News</h2>
+<div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> LA Rams (preselected)
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> NFC West News
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option3" autocomplete="off"> Around the NFL
+  </label>
+</div>
+  <br />
+</br>
+<div id="rss">
+<%url = 'https://news.google.com/news?cf=all&hl=en&pz=1&ned=us&q=la+rams+nfl&cf=all&ncl=deU98VWiSHJpxkM7vdTS9e9egYQhM&output=rss'%>
+<%open(url) do |rss|%>
+<%feed = RSS::Parser.parse(rss)%>
+<%  feed.items.each do |item|%>
+<p>
+  <%= link_to "#{item.title}", item.link%>
+</p>
+<%end%>
+<%end%>
+</div>

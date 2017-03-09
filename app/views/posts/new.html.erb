@@ -1,0 +1,30 @@
+<h1>Write a new post!</h1>
+<br />
+
+
+<%= form_for @post do |f| %>
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@post.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %><br /><br />
+  <%= f.label :content %>
+  <%= f.trix_editor :content %><br /><br />
+  <%= hidden_field_tag "topic_id", params[:topic_id]%>
+  <%= f.submit %>
+<% end %>
+
+
+<%= link_to 'Back', topic_path(@post.topic_id) %>

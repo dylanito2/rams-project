@@ -1,0 +1,12 @@
+To Do:
+
+1.) Table for topics: number of posts, last reply info
+2.) Profile views - profile info and post history with link to post title
+3.) Sort order by last reply and add is pinned, which sets it to auto be on topic
+
+5.) Change fonts
+6.) Styling - div around user profile message ,and message, change color of post.
+7.) Admin views
+
+
+4.) Tabs for RSS and Twitter Feed. Pass in params to uRL

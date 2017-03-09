@@ -1,0 +1,28 @@
+
+<table class ="table table-striped">
+<thead>
+  <tr>
+  <th>
+    <h3><%= @topic.name %>  <% if user_signed_in? %> | <%= link_to "  New Post", new_topic_post_path(:topic_id => @topic.id) %><%end%> </h3>
+
+  </th>
+  <th>
+    <h3># of Replies</h3>
+  </th>
+  </tr>
+  </thead>
+  <tbody>
+<% @topic.posts.each do |post|%>
+  <h4>
+    <tr>
+      <td>
+        <%= link_to post.title, topic_post_path(@topic, post)  %>
+      </td>
+      <td>
+        <%= post.replies.count %>
+      </td>
+    </tr>
+  </h4>
+<%end%>
+  </tbody>
+</table>
