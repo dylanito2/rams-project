@@ -7,6 +7,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.10.1/trix.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/0.10.1/trix.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("input").click(function() {
+           var id = $(this).attribute("data-id"); // Using a custom attribute.
+           $("#pages div").hide(); // gather all the div tags under the element with the id pages and hide them.
+           $(".div" + id).show(); // Show the div with the class of .divX where X is the number stored in the data-id of the object that was clicked.
+        });
+    });
+    </script>
   </head>
   <body>
     <%= render 'layouts/navbar' %>
@@ -23,22 +32,7 @@
           <%= yield %>
         </div>
         <div class="col-md-4 twitter-and-rss">
-              <div>
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-primary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked> LA Rams
-              </label>
-              <label class="btn btn-primary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> NFC West News
-              </label>
-              <label class="btn btn-primary">
-                <input type="radio" name="options" id="option3" autocomplete="off"> Around the NFL
-              </label>
-            </div>
-            <br />
-          <div class="twitter-feed">
-          <a class="twitter-timeline" href="https://twitter.com/LARamsSite/lists/the-latest-rams-news">A Twitter List by LARamsSite</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
+          <%=render '/layouts/twitter'%>
           <%=render '/layouts/rss'%>
         </div>
       </div>
